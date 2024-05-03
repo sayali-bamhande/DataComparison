@@ -1,0 +1,14 @@
+{
+  "json_path": "C://Users//Sayali.Bamhande//Documents//myprojecthsbc-3a9b0e7c4b4f.json",
+  "query": "SELECT * FROM `bigquery-public-data.austin_311.311_service_requests` where status in ('Closed','Open') order by status_change_date LIMIT 50;",
+  "bucket_name": "mybucket_hsbc",
+  "csv_file": "BigQuery.csv",
+  "bigQuery_output_file_path" : "BigQuery/BigQuery.csv",
+  "cluster_name" : "cluster-1234",
+  "project_id" : "myprojecthsbc",
+  "region" : "us-central1",
+  "custer_to_create" : "automation-cluster",
+  "zone" : "us-central1-f",
+  "local_file_path" : ""
+
+}

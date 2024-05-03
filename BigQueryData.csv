@@ -1,0 +1,11 @@
+county_fips_code,county_name,state_name,forecast_date,prediction_date,new_confirmed,cumulative_confirmed,new_confirmed_7day_rolling,new_deaths,cumulative_deaths,new_deaths_7day_rolling,hospitalized_patients,recovered,new_confirmed_ground_truth,cumulative_confirmed_ground_truth,new_deaths_ground_truth,cumulative_deaths_ground_truth,hospitalized_patients_ground_truth,recovered_documented_ground_truth,county_population
+48007,Aransas,Texas,05-02-2022,21-01-2022,,,37.14285714,,,0,,,52,3282,0,69,,,23510
+55013,Burnett,Wisconsin,05-02-2022,21-01-2022,,,29.28571429,,,0.142857143,,,38,3530,1,37,,,15414
+31021,Burt,Nebraska,05-02-2022,21-01-2022,,,10.71428571,,,0,,,17,1134,0,12,,,6459
+1017,Chambers,Alabama,05-02-2022,21-01-2022,,,64.42857143,,,0.142857143,,,78,7712,0,147,,,33254
+45023,Chester,South Carolina,05-02-2022,21-01-2022,,,259.7142857,,,1.571428571,,,92,8635,1,128,,,32244
+29045,Clark,Missouri,05-02-2022,21-01-2022,,,112.2857143,,,0.285714286,,,3,1412,0,28,,,6797
+40029,Coal,Oklahoma,05-02-2022,21-01-2022,,,11.14285714,,,0,,,0,1249,0,20,,,5495
+35009,Curry,New Mexico,05-02-2022,21-01-2022,,,165.4285714,,,0.857142857,,,199,10902,1,151,,,48954
+48125,Dickens,Texas,05-02-2022,21-01-2022,,,8.428571429,,,0,,,1,367,0,15,,,2211
+22035,East Carroll,Louisiana,05-02-2022,21-01-2022,,,19,,,0.285714286,,,15,2082,0,35,,,6861

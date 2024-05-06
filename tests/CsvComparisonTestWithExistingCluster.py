@@ -1,8 +1,8 @@
-from pythonProject.utils.StartCluster import startTheCluster
-from pythonProject.utils.StopCluster import stopTheCluster
-from pythonProject.utils.SubmitJobToCluster import SubmitJobToCluster
-from pythonProject.utils.UploadFileToGCS import upload_to_gcs
-from pythonProject.utils.ConstantsData import region, project_id, cluster_name, bucket_name
+from utils.StartCluster import startTheCluster
+from utils.StopCluster import stopTheCluster
+from utils.SubmitJobToCluster import SubmitJobToCluster
+from utils.UploadFileToGCS import upload_to_gcs
+from utils.ConstantsData import region, project_id, cluster_name, bucket_name
 
 
 #local_file_path = "C:\\Users\\Sayali.Bamhande\\PycharmProjects\\pythonProject\\pythonProject\\utils\\CompareCSVAndGenerateOutput.py"

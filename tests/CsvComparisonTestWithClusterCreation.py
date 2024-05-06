@@ -1,7 +1,7 @@
-from pythonProject.utils.CreateClusterTest import create_cluster, delete_cluster
-from pythonProject.utils.SubmitJobToCluster import SubmitJobToCluster
-from pythonProject.utils.UploadFileToGCS import upload_to_gcs
-from pythonProject.utils.ConstantsData import region, project_id, cluster_name, bucket_name
+from utils.CreateClusterTest import create_cluster, delete_cluster
+from utils.SubmitJobToCluster import SubmitJobToCluster
+from utils.UploadFileToGCS import upload_to_gcs
+from utils.ConstantsData import region, project_id, cluster_name, bucket_name
 
 
 local_file_path = ("C:\\Users\\Sayali.Bamhande\\PycharmProjects\\pythonProject\\pythonProject\\utils"

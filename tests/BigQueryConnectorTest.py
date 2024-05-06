@@ -1,8 +1,8 @@
-from pythonProject.utils.BigQueryConnector import connectToBigQuery
+from utils.BigQueryConnector import connectToBigQuery
 import json
 import os
 
-from pythonProject.utils.DownloadGCStoLocal import downloadObject
+from utils.DownloadGCStoLocal import downloadObject
 
 current_dir = os.path.dirname(__file__)
 parent_dir = os.path.dirname(current_dir)

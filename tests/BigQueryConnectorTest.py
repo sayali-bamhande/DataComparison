@@ -1,6 +1,7 @@
-from utils.BigQueryConnector import connectToBigQuery
 import json
 import os
+from utils.BigQueryConnector import connectToBigQuery
+
 
 from utils.DownloadGCStoLocal import downloadObject
 

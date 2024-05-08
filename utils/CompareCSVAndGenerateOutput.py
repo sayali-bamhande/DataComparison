@@ -3,8 +3,6 @@ from datetime import datetime, time
 
 import pandas as pd
 
-from utils.ConstantsData import file1_path, bucket_name, file2_path
-
 
 def compare_and_generate_output(csv1_path, csv2_path, bucket_name):
     # Read CSV files
@@ -16,7 +14,7 @@ def compare_and_generate_output(csv1_path, csv2_path, bucket_name):
     report = [f"No of rows in Source file(DB2) : {len(df1)}", f"No of rows in Target file(BigQuery) : {len(df2)}"]
     # Iterate through each row and compare values
     count = 0
-    starttime = time.time()
+    starttime =  time.time()
     for index, row in df1.iterrows():
         flag = False
         # Check if the row index exists in df2
@@ -64,11 +62,10 @@ def compare_and_generate_output(csv1_path, csv2_path, bucket_name):
     for line in report:
         print(line)
 
-
 # print(df)
 
 
 # Example usage
-# file1 = 'gs://mybucket_hsbc/db2_changed.csv'
-# file2 = 'gs://mybucket_hsbc/BigQueryData.csv'
-compare_and_generate_output(file1_path, file2_path, f'{bucket_name}')
+file1 = 'gs://mybucket_hsbc/db2_changed.csv'
+file2 = 'gs://mybucket_hsbc/BigQueryData.csv'
+compare_and_generate_output(file1, file2,'mybucket_hsbc')

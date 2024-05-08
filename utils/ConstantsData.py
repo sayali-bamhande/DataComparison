@@ -20,3 +20,7 @@ zone = config['zone']
 
 csv_file = config['csv_file']
 file_path = config['bigQuery_output_file_path']
+
+file1_path = config['DB2_file']
+file2_path = config['BigQuery_file']
+

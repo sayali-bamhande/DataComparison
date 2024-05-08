@@ -1,8 +1,7 @@
 from google.cloud import dataproc_v1
 
 
-
-def stopTheCluster(project_id,region,cluster_name):
+def stopTheCluster(project_id, region, cluster_name):
     client_options = {"api_endpoint": "us-central1-dataproc.googleapis.com:443"}
     client = dataproc_v1.ClusterControllerClient(client_options=client_options)
     # Stop the cluster
@@ -16,5 +15,4 @@ def stopTheCluster(project_id,region,cluster_name):
     stop_response = stop_operation.result()
     print("Cluster stopped successfully:", stop_response.cluster_name)
 
-
-#stopTheCluster()
+# stopTheCluster()

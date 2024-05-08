@@ -23,4 +23,4 @@ def downloadObject(bucket_name,file_path):
 # Specify the GCS bucket and file path
 bucket_name = "mybucket_hsbc"
 file_path = "BigQuery/BigQuery.csv"
-downloadObject(bucket_name,'Output/Output_20240502_073649')
+downloadObject(bucket_name,'Output/Output_20240508_083830')

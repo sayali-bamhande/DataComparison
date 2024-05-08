@@ -9,6 +9,7 @@
   "region" : "us-central1",
   "custer_to_create" : "automation-cluster",
   "zone" : "us-central1-f",
-  "local_file_path" : ""
-
+  "local_file_path" : "",
+  "DB2_file" : "gs://mybucket_hsbc/db2_changed.csv",
+  "BigQuery_file" : "gs://mybucket_hsbc/BigQueryData.csv"
 }

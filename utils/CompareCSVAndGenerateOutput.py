@@ -1,5 +1,5 @@
 import os
-from datetime import datetime, time
+from datetime import datetime
 
 import pandas as pd
 
@@ -14,7 +14,6 @@ def compare_and_generate_output(csv1_path, csv2_path, bucket_name):
     report = [f"No of rows in Source file(DB2) : {len(df1)}", f"No of rows in Target file(BigQuery) : {len(df2)}"]
     # Iterate through each row and compare values
     count = 0
-    starttime =  time.time()
     for index, row in df1.iterrows():
         flag = False
         # Check if the row index exists in df2

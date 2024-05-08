@@ -24,7 +24,7 @@ def upload_to_gcs(local_file_path, bucket_name, destination_blob_name):
     blob.upload_from_filename(local_file_path)
    # flag_value = True
 
-    print(f"File {local_file_path} uploaded to {destination_blob_name} in {bucket_name}.")
+    print(f"File {local_file_path} uploaded as {destination_blob_name} in {bucket_name}.")
 
    # return False
 

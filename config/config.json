@@ -4,7 +4,7 @@
   "bucket_name": "mybucket_hsbc",
   "csv_file": "BigQuery.csv",
   "bigQuery_output_file_path" : "BigQuery/BigQuery.csv",
-  "cluster_name" : "cluster-1234",
+  "cluster_name" : "cluster-4ede",
   "project_id" : "myprojecthsbc",
   "region" : "us-central1",
   "custer_to_create" : "automation-cluster",

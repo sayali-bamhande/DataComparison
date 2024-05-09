@@ -15,4 +15,6 @@ def stopTheCluster(project_id, region, cluster_name):
     stop_response = stop_operation.result()
     print("Cluster stopped successfully:", stop_response.cluster_name)
 
+    return True
+
 # stopTheCluster()

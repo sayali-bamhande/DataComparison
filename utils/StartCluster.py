@@ -15,4 +15,6 @@ def startTheCluster(project_id, region, cluster_name):
     start_response = start_operation.result()
     print("Cluster started successfully:", start_response.cluster_name)
 
+    return True
+
 # startTheCluster()

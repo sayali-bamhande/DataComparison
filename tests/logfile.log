@@ -1,0 +1,9 @@
+2024-05-09 15:31:19,930 :INFO : tests.test_CsvComparisonTest :File generated successfully!
+2024-05-09 15:41:20,054 :INFO : tests.test_CsvComparisonTest :Starting the cluster-4ede
+2024-05-09 15:43:30,188 :INFO : tests.test_CsvComparisonTest :Starting the cluster-4ede
+2024-05-09 15:46:16,283 :INFO : tests.test_CsvComparisonTest :cluster-4ede is started successfully!
+2024-05-09 15:46:16,284 :INFO : tests.test_CsvComparisonTest :Submitting the Job
+2024-05-09 15:48:27,464 :INFO : tests.test_CsvComparisonTest :Job Submitted successfully
+2024-05-09 15:48:27,465 :INFO : tests.test_CsvComparisonTest :File generated successfully!
+2024-05-09 15:48:27,465 :INFO : tests.test_CsvComparisonTest :Stopping the cluster-4ede
+2024-05-09 15:50:00,190 :INFO : tests.test_CsvComparisonTest :cluster-4ede is stopped successfully!

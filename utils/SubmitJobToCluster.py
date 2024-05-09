@@ -15,7 +15,7 @@ def SubmitJobToCluster(project_id, region, cluster_name, main_file):
 
     # Create the job config. 'main_jar_file_uri' can also be a
     # Google Cloud Storage URL.
-    print("Main file is  : "+main_file)
+    print("Main file is  : " + main_file)
     job = {
         "placement": {"cluster_name": cluster_name},
         "pyspark_job": {
@@ -41,3 +41,5 @@ def SubmitJobToCluster(project_id, region, cluster_name, main_file):
     )
 
     print(f"Job finished successfully: {output}")
+
+    return True

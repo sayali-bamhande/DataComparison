@@ -1,4 +1,0 @@
-county_fips_code_DB2,county_fips_code_BigQuery,county_name_DB2,county_name_BigQuery,state_name_DB2,state_name_BigQuery,forecast_date_DB2,forecast_date_BigQuery,prediction_date_DB2,prediction_date_BigQuery
-48005,48001,Aransass,,Texas,,05-02-2022,,21-01-2022,
-35009,,Curry,,New Mexicos,New Mexicoss,05-02-2022,,21-01-2022,
-22035,,East Carroll,Eastt Carroll,Louisiana,,05-02-2022,,21-01-2022,

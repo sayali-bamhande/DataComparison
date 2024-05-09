@@ -7,12 +7,12 @@ from utils.ConstantsData import region, project_id, cluster_name, bucket_name
 from utils.StartCluster import startTheCluster
 from utils.StopCluster import stopTheCluster
 
-sys.path.append("C:/Users/Sayali.Bamhande/PycharmProjects/DataComparison/utils")
-project_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-print("*************", project_dir)
+# sys.path.append("C:/Users/Sayali.Bamhande/PycharmProjects/DataComparison/utils")
+# project_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+# print("*************", project_dir)
 zone = 'us-central1-f'
 
-sys.path.insert(0, project_dir)
+#sys.path.insert(0, project_dir)
 from utils.UploadFileToGCS import upload_to_gcs
 from utils.SubmitJobToCluster import SubmitJobToCluster
 

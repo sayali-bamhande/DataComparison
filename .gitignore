@@ -1,4 +1,5 @@
 .idea/*
 output/*
 *.csv
+tests/logfile.log
 

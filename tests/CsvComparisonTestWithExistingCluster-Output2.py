@@ -3,7 +3,7 @@ import os
 from utils.StartCluster import startTheCluster
 from utils.StopCluster import stopTheCluster
 from utils.SubmitJobToCluster import SubmitJobToCluster
-from utils.UploadFileToGCS import upload_to_gcs
+from utils.UploadFileToGCS import uploadToGCS
 from utils.ConstantsData import region, project_id, cluster_name, bucket_name
 
 

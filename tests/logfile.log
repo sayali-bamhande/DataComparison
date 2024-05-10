@@ -22,3 +22,38 @@
 2024-05-09 16:48:13,935 :INFO : tests.test_CsvComparisonTest :File generated successfully!
 2024-05-09 16:48:13,935 :INFO : tests.test_CsvComparisonTest :Stopping the cluster-4ede
 2024-05-09 16:49:33,285 :INFO : tests.test_CsvComparisonTest :cluster-4ede is stopped successfully!
+2024-05-10 11:16:50,333 :INFO : tests.CsvComparisonTestWithExistingCluster-Output2_test :Starting the cluster-4ede
+2024-05-10 11:20:36,567 :INFO : tests.CsvComparisonTestWithExistingCluster-Output2_test :cluster-4ede is started successfully!
+2024-05-10 11:20:36,567 :INFO : tests.CsvComparisonTestWithExistingCluster-Output2_test :Submitting the Job
+2024-05-10 11:22:47,154 :INFO : tests.CsvComparisonTestWithExistingCluster-Output2_test :Job Submitted successfully
+2024-05-10 11:22:47,154 :INFO : tests.CsvComparisonTestWithExistingCluster-Output2_test :File generated successfully!
+2024-05-10 11:22:47,154 :INFO : tests.CsvComparisonTestWithExistingCluster-Output2_test :Stopping the cluster-4ede
+2024-05-10 11:24:09,137 :INFO : tests.CsvComparisonTestWithExistingCluster-Output2_test :cluster-4ede is stopped successfully!
+2024-05-10 11:45:45,242 :INFO : tests.CsvComparisonTestWithExistingCluster-Output2_test :Going to upload CompareCSVAndGenerateOutput.py on GCS bucket
+2024-05-10 11:47:40,064 :INFO : tests.test_CsvComparisonTestWithExistingCluster-Output2 :Going to upload CompareCSVAndGenerateOutput.py on GCS bucket
+2024-05-10 11:50:40,311 :INFO : tests.test_CsvComparisonTestWithExistingCluster-Output2 :Going to upload CompareCSVAndGenerateOutput.py on GCS bucket
+2024-05-10 11:51:07,565 :INFO : tests.test_CsvComparisonTestWithExistingCluster-Output2 :Going to upload CompareCSVAndGenerateOutput.py on GCS bucket
+2024-05-10 11:52:22,334 :INFO : tests.test_CsvComparisonTestWithExistingCluster-Output2 :Going to upload CompareCSVAndGenerateOutput.py on GCS bucket
+2024-05-10 11:53:41,963 :INFO : tests.test_CsvComparisonTestWithExistingCluster-Output2 :Going to upload CompareCSVAndGenerateOutput.py on GCS bucket
+2024-05-10 11:57:17,118 :INFO : tests.test_CsvComparisonTestWithExistingCluster-Output2 :Going to upload CompareCSVAndGenerateOutput.py on GCS bucket
+2024-05-10 11:57:21,356 :INFO : tests.test_CsvComparisonTestWithExistingCluster-Output2 :CompareCSVAndGenerateOutput.py is uploaded on GCS bucket successfully (code required to generate output in format 1)
+2024-05-10 11:57:21,357 :INFO : tests.test_CsvComparisonTestWithExistingCluster-Output2 :Starting the cluster-4ede
+2024-05-10 12:00:54,393 :INFO : tests.test_CsvComparisonTestWithExistingCluster-Output2 :cluster-4ede is started successfully!
+2024-05-10 12:00:54,394 :INFO : tests.test_CsvComparisonTestWithExistingCluster-Output2 :Submitting the Job
+2024-05-10 12:03:00,923 :INFO : tests.test_CsvComparisonTestWithExistingCluster-Output2 :Job Submitted successfully
+2024-05-10 12:03:00,923 :INFO : tests.test_CsvComparisonTestWithExistingCluster-Output2 :File generated successfully!
+2024-05-10 12:03:00,924 :INFO : tests.test_CsvComparisonTestWithExistingCluster-Output2 :Stopping the cluster-4ede
+2024-05-10 12:04:26,732 :INFO : tests.test_CsvComparisonTestWithExistingCluster-Output2 :cluster-4ede is stopped successfully!
+2024-05-10 12:38:35,337 :INFO : tests.test_CsvComparisonTestWithClusterCreation-Output1 :Going to upload CsvDataComparisonUsingDataframe.py on GCS bucket
+2024-05-10 12:38:40,435 :INFO : tests.test_CsvComparisonTestWithClusterCreation-Output1 :CsvDataComparisonUsingDataframe.py is uploaded on GCS bucket successfully (code required to generate output in format 1)
+2024-05-10 12:38:40,435 :INFO : tests.test_CsvComparisonTestWithClusterCreation-Output1 :Starting the automation-cluster
+2024-05-10 12:41:14,615 :INFO : tests.test_CsvComparisonTestWithClusterCreation-Output1 :automation-cluster is created and started successfully!
+2024-05-10 12:41:14,616 :INFO : tests.test_CsvComparisonTestWithClusterCreation-Output1 :Submitting the Job
+2024-05-10 12:46:47,831 :INFO : tests.test_CsvComparisonTestWithClusterCreation-Output1 :Going to upload CsvDataComparisonUsingDataframe.py on GCS bucket
+2024-05-10 12:46:54,113 :INFO : tests.test_CsvComparisonTestWithClusterCreation-Output1 :CsvDataComparisonUsingDataframe.py is uploaded on GCS bucket successfully (code required to generate output in format 1)
+2024-05-10 12:46:54,113 :INFO : tests.test_CsvComparisonTestWithClusterCreation-Output1 :Starting the automation-cluster
+2024-05-10 12:48:18,215 :INFO : tests.test_CsvComparisonTestWithClusterCreation-Output1 :Going to upload CsvDataComparisonUsingDataframe.py on GCS bucket
+2024-05-10 12:48:23,203 :INFO : tests.test_CsvComparisonTestWithClusterCreation-Output1 :CsvDataComparisonUsingDataframe.py is uploaded on GCS bucket successfully (code required to generate output in format 1)
+2024-05-10 12:48:23,204 :INFO : tests.test_CsvComparisonTestWithClusterCreation-Output1 :Starting the automation-cluster
+2024-05-10 12:51:27,112 :INFO : tests.test_CsvComparisonTestWithClusterCreation-Output1 :automation-cluster is created and started successfully!
+2024-05-10 12:51:27,113 :INFO : tests.test_CsvComparisonTestWithClusterCreation-Output1 :Submitting the Job

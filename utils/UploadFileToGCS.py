@@ -1,7 +1,7 @@
 from google.cloud import storage
 
 
-def upload_to_gcs(local_file_path, bucket_name, destination_blob_name):
+def uploadToGCS(local_file_path, bucket_name, destination_blob_name):
     # flag_value = False
 
     # Initialize a client

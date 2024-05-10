@@ -7,7 +7,7 @@ from utils.UploadFileToGCS import upload_to_gcs
 from utils.ConstantsData import region, project_id, cluster_name, bucket_name
 
 
-fileName = 'CompareCSVAndGenerateOutput.py'
+fileName = 'CsvDataComparisonUsingDataframe.py'
 zone = 'us-central1-f'
 
 

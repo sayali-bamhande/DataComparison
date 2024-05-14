@@ -43,7 +43,7 @@ def test_submit_job_to_cluster():
 
     logger.info(f"{new_cluster_name} is created and started successfully!")
     logger.info(f"Submitting the Job")
-    job_output = SubmitJobToCluster(project_id, region, cluster_name, f'{fileName}')
+    job_output = SubmitJobToCluster(project_id, region, new_cluster_name, f'{fileName}')
 
     if job_output:
         assert job_output, "Job submission failed. Assertion failed."

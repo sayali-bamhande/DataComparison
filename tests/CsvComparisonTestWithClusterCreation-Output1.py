@@ -13,7 +13,7 @@ root_dir = os.path.dirname(root_dir)
 file_path = os.path.join(root_dir, "utils/"f"{fileName}")
 destination_blob_name = f'{fileName}'
 
-upload_to_gcs(file_path, bucket_name, destination_blob_name)
+uploadToGCS(file_path, bucket_name, destination_blob_name)
 zone = 'us-central1-f'
 create_cluster(project_id, region, new_cluster_name, zone)
 SubmitJobToCluster(project_id, region, new_cluster_name, {fileName})

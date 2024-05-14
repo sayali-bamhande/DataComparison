@@ -1,11 +1,10 @@
 import os
+import pandas as pd
 from datetime import datetime
 
-import pandas as pd
 
-
-def compare_and_generate_output(csv1_path, csv2_path, bucket_name,output_format):
-    # Read CSV files
+def compare_and_generate_output(csv1_path, csv2_path, output_format):
+    # Read CSV or Excel files
     if csv1_path.lower().endswith('.csv'):
         df1 = pd.read_csv(csv1_path)
     else:
@@ -16,6 +15,7 @@ def compare_and_generate_output(csv1_path, csv2_path, bucket_name,output_format)
     else:
         df2 = pd.read_excel(csv2_path)
 
+    # Read CSV files
     # df1 = pd.read_csv(csv1_path)
     # df2 = pd.read_csv(csv2_path)
 
@@ -56,9 +56,8 @@ def compare_and_generate_output(csv1_path, csv2_path, bucket_name,output_format)
 
     # Create DataFrame from the list of rows
     report.append(f"Discrepancy found in {count} rows")
-
     discrepancies_df = pd.DataFrame(rows)
-
+    #
 
     # Determine the output file extension
     if output_format.lower() == 'csv':
@@ -70,33 +69,33 @@ def compare_and_generate_output(csv1_path, csv2_path, bucket_name,output_format)
     else:
         raise ValueError("Invalid output format. Supported formats: csv, xls, xlsx")
 
-    # output_filename_correct = f"Output_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv"
-
     output_path = f'gs://{bucket_name}/Output/{output_filename}'
 
-    # Write output to CSV
-    discrepancies_df.to_csv(output_path, index=False)
-
+    # Write output to the specified format
     if output_format.lower() == 'csv':
         discrepancies_df.to_csv(output_path, index=False)
     elif output_format.lower() == 'xls':
         discrepancies_df.to_excel(output_path, index=False)
     elif output_format.lower() == 'xlsx':
         discrepancies_df.to_excel(output_path, index=False)
+    # output_filename_correct = f"Output_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv"
+    # output_path = f'gs://{bucket_name}/Output/{output_filename_correct}'
+    #
+    # # Write output to CSV
+    # discrepancies_df.to_csv(output_path, index=False)
 
-
-
-    df = pd.read_csv(output_path)
-    pd.options.display.max_columns = len(df.columns)
+    # df = pd.read_csv(output_path)
+    #
+    # pd.options.display.max_columns = len(df.columns)
     report.append(f"Reports uploaded at GCS location and path :  {output_path}")
 
     for line in report:
         print(line)
 
-# print(df)
-
 
 # Example usage
-file1 = 'gs://mybucket_hsbc/db2_changed.csv'
-file2 = 'gs://mybucket_hsbc/BigQueryData.csv'
-compare_and_generate_output(file1, file2,'mybucket_hsbc',"csv")
+bucket_name = 'mybucket_hsbc'
+file1 = "C:/Users/Sayali.Bamhande/Downloads/Free_Test_Data_500KB_XLS.xls"
+file2 = "C:/Users/Sayali.Bamhande/Downloads/Free_Test_Data_500KB_XLS1.xls"
+# output_path = f'gs://mybucket_hsbc/output'
+compare_and_generate_output(file1, file2, output_format='xls')

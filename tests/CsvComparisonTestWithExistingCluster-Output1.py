@@ -3,7 +3,7 @@ import os
 from utils.StartCluster import startTheCluster
 from utils.StopCluster import stopTheCluster
 from utils.SubmitJobToCluster import SubmitJobToCluster
-from utils.UploadFileToGCS import upload_to_gcs
+from utils.UploadFileToGCS import uploadToGCS
 from utils.ConstantsData import region, project_id, cluster_name, bucket_name
 
 
@@ -17,7 +17,7 @@ print(os.path.dirname(root_dir))
 root_dir = os.path.dirname(root_dir)
 file_path = os.path.join(root_dir, "utils/"f"{fileName}")
 destination_blob_name = f'{fileName}'
-upload_to_gcs(file_path, bucket_name, destination_blob_name)
+uploadToGCS(file_path, bucket_name, destination_blob_name)
 startTheCluster(project_id, region, cluster_name)
 SubmitJobToCluster(project_id, region, cluster_name, f'{fileName}')
 stopTheCluster(project_id, region, cluster_name)

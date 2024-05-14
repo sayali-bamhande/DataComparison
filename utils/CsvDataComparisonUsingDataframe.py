@@ -3,55 +3,105 @@ import pandas as pd
 from datetime import datetime
 
 
-def compare_files(file1_path, file2_path,bucket_name):
-    # Read files into pandas DataFrames
-    df1 = pd.read_csv(file1_path)
-    df2 = pd.read_csv(file2_path)
+def compare_and_generate_output(csv1_path, csv2_path, output_format):
+    # Read CSV or Excel files
+    if csv1_path.lower().endswith('.csv'):
+        df1 = pd.read_csv(csv1_path)
+    else:
+        df1 = pd.read_excel(csv1_path)
 
-    # Initialize an empty DataFrame to store output
-    output_df = pd.DataFrame()
+    if csv2_path.lower().endswith('.csv'):
+        df2 = pd.read_csv(csv2_path)
+    else:
+        df2 = pd.read_excel(csv2_path)
 
-    # Iterate over rows
-    # enumerate = when dealing with iterators, we also need to keep a count of iterations.
-    # The itertuples() method is used to iterate over the rows of a DataFrame.
-    for index, (row1, row2) in enumerate(zip(df1.itertuples(index=False), df2.itertuples(index=False))):
-        # Initialize a dictionary to store differing columns
-        diff_columns = {}
+    # Read CSV files
+    # df1 = pd.read_csv(csv1_path)
+    # df2 = pd.read_csv(csv2_path)
 
-        # Iterate over columns
-        # zip is used for multiple iterator to single
-        for col_name, val1, val2 in zip(df1.columns, row1, row2):
-            # Check if values are different
-            if val1 != val2:
-                # If different, add column to the dictionary
-                diff_columns[col_name+'_DB2'] = val1
-                diff_columns[col_name + '_BigQuery'] = val2
-            else:
-                # If same, add empty values
-                diff_columns[col_name+'_DB2'] = ''
-                diff_columns[col_name + '_BigQuery'] = ''
+    # Initialize an empty list to store rows
+    rows = []
+    report = [f"No of rows in Source file(DB2) : {len(df1)}", f"No of rows in Target file(BigQuery) : {len(df2)}"]
+    # Iterate through each row and compare values
+    count = 0
+    for index, row in df1.iterrows():
+        flag = False
+        # Check if the row index exists in df2
+        if index < len(df2):
+            # Compare values for each column
+            discrepancy_row = {}
+            for column in df1.columns:
+                if row[column] != df2.iloc[index][column]:
+                    if pd.isna(row[column]) and pd.isna(df2.iloc[index][column]):
+                        break
+                    discrepancy_row[f"{column}_DB2"] = row[column]
+                    discrepancy_row[f"{column}_BigQuery"] = df2.iloc[index][column]
+                    flag = True
+                    count = count + 1
+                # rows.append(discrepancy_row)
 
-        # Append the row to the output DataFrame
-        output_df = output_df._append(diff_columns, ignore_index=True)
+                else:
+                    discrepancy_row[f"{column}_DB2"] = row[column]
+                    discrepancy_row[f"{column}_BigQuery"] = ""
+
+            # Append the discrepancy row to rows list if discrepancies found
+            if flag:
+                rows.append(discrepancy_row)
+
+        else:
+            # Add remaining rows from csv1 to rows
+            discrepancy_row = {f"{column}_DB2": row[column] for column in df1.columns}
+            discrepancy_row.update({f"{column}_BigQuery": "" for column in df2.columns})
+            rows.append(discrepancy_row)
+
+    # Create DataFrame from the list of rows
+    report.append(f"Discrepancy found in {count} rows")
+    discrepancies_df = pd.DataFrame(rows)
+    #
+
+    # Determine the output file extension
+    if output_format.lower() == 'csv':
+        output_filename = f"Output_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv"
+    elif output_format.lower() == 'xls':
+        output_filename = f"Output_{datetime.now().strftime('%Y%m%d_%H%M%S')}.xls"
+    elif output_format.lower() == 'xlsx':
+        output_filename = f"Output_{datetime.now().strftime('%Y%m%d_%H%M%S')}.xlsx"
+    else:
+        raise ValueError("Invalid output format. Supported formats: csv, xls, xlsx")
+
+    output_path = f'gs://{bucket_name}/Output/{output_filename}'
+
+    # Write output to the specified format
+    if output_format.lower() == 'csv':
+        discrepancies_df.to_csv(output_path, index=False)
+    elif output_format.lower() == 'xls':
+        discrepancies_df.to_excel(output_path, index=False)
+    elif output_format.lower() == 'xlsx':
+        discrepancies_df.to_excel(output_path, index=False)
+    # output_filename_correct = f"Output_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv"
+    # output_path = f'gs://{bucket_name}/Output/{output_filename_correct}'
+    #
+    # # Write output to CSV
+    # discrepancies_df.to_csv(output_path, index=False)
+
+    # df = pd.read_csv(output_path)
+    #
+    # pd.options.display.max_columns = len(df.columns)
+    report.append(f"Reports uploaded at GCS location and path :  {output_path}")
+
+    for line in report:
+        print(line)
 
 
-
-
-    # Generate output file names with original file names and date-time
-    output_filename_correct = f"{datetime.now().strftime('%Y%m%d_%H%M%S')}_{os.path.basename(file1_path)}"
-
-    output_path = f'gs://{bucket_name}/Output/{output_filename_correct}'
-
-    # Write output to CSV
-    output_df.to_csv(output_path, index=False)
-    df = pd.read_csv(output_path)
-    pd.options.display.max_columns = len(df.columns)
-    print(df)
-
-    # print("Discrepancy"+pd.read_csv(output_path))
-
+# Example usage
+# bucket_name = 'dumybucket123'
+# DB2 = 'gs://dumybucket123/DB2/file_example_XLS_100.xls'
+# BigQuery = 'gs://dumybucket123/Bigquery/file_example_XLS_100error.xls'
+# output_path = f'gs://dumybucket123'
+# compare_and_generate_output(DB2, BigQuery,output_path,output_format='Csv')
 bucket_name = 'mybucket_hsbc'
 file1_path = 'gs://mybucket_hsbc/db2_changed.csv'
 file2_path = 'gs://mybucket_hsbc/BigQueryData.csv'
 output_path = f'gs://mybucket_hsbc/Output/Discrepancy_Output.csv'
-compare_files(file1_path,file2_path,bucket_name)
+# compare_files(file1_path,file2_path,bucket_name)
+compare_and_generate_output(file1_path, file2_path, output_format='Csv')

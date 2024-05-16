@@ -4,7 +4,7 @@ from datetime import datetime
 import pandas as pd
 
 
-def compare_and_generate_output(csv1_path, csv2_path, bucket_name,output_format):
+def compare_and_generate_output(csv1_path, csv2_path, bucket_name, output_format):
     # Read CSV files
     if csv1_path.lower().endswith('.csv'):
         df1 = pd.read_csv(csv1_path)
@@ -24,7 +24,10 @@ def compare_and_generate_output(csv1_path, csv2_path, bucket_name,output_format)
     report = [f"No of rows in Source file(DB2) : {len(df1)}", f"No of rows in Target file(BigQuery) : {len(df2)}"]
     # Iterate through each row and compare values
     count = 0
+    row_num=0
+    i = 1
     for index, row in df1.iterrows():
+        temp = ''
         flag = False
         # Check if the row index exists in df2
         if index < len(df2):
@@ -36,6 +39,8 @@ def compare_and_generate_output(csv1_path, csv2_path, bucket_name,output_format)
                         break
                     discrepancy_row[f"{column}_DB2"] = row[column]
                     discrepancy_row[f"{column}_BigQuery"] = df2.iloc[index][column]
+                    temp = temp + f'{column} ,'
+                    # report.append(f"  {i}  | {column}")
                     flag = True
                     count = count + 1
                 # rows.append(discrepancy_row)
@@ -43,6 +48,10 @@ def compare_and_generate_output(csv1_path, csv2_path, bucket_name,output_format)
                 else:
                     discrepancy_row[f"{column}_DB2"] = row[column]
                     discrepancy_row[f"{column}_BigQuery"] = ""
+            if temp != '':
+                report.append(f"{i} | {row[0]} --> {temp}")
+                row_num = row_num + 1
+            i = i + 1
 
             # Append the discrepancy row to rows list if discrepancies found
             if flag:
@@ -55,10 +64,10 @@ def compare_and_generate_output(csv1_path, csv2_path, bucket_name,output_format)
             rows.append(discrepancy_row)
 
     # Create DataFrame from the list of rows
-    report.append(f"Discrepancy found in {count} rows")
+    report.append(f"Discrepancy found in {row_num} rows")
+    report.append(f"Discrepancy found at {count} places")
 
     discrepancies_df = pd.DataFrame(rows)
-
 
     # Determine the output file extension
     if output_format.lower() == 'csv':
@@ -84,8 +93,6 @@ def compare_and_generate_output(csv1_path, csv2_path, bucket_name,output_format)
     elif output_format.lower() == 'xlsx':
         discrepancies_df.to_excel(output_path, index=False)
 
-
-
     df = pd.read_csv(output_path)
     pd.options.display.max_columns = len(df.columns)
     report.append(f"Reports uploaded at GCS location and path :  {output_path}")
@@ -93,10 +100,13 @@ def compare_and_generate_output(csv1_path, csv2_path, bucket_name,output_format)
     for line in report:
         print(line)
 
+
 # print(df)
 
 
 # Example usage
 file1 = 'gs://mybucket_hsbc/db2_changed.csv'
 file2 = 'gs://mybucket_hsbc/BigQueryData.csv'
-compare_and_generate_output(file1, file2,'mybucket_hsbc',"csv")
+# file1 = 'C:\\Users\\Sayali.Bamhande\\Downloads\\xl\\db2_changed.csv'
+# file2 = 'C:\\Users\\Sayali.Bamhande\\Downloads\\xl\\BigQueryData.csv'
+compare_and_generate_output(file1, file2, 'mybucket_hsbc', "csv")

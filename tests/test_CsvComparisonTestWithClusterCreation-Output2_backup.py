@@ -13,7 +13,7 @@ zone = 'us-central1-f'
 fileName = 'CompareCSVAndGenerateOutput.py'
 
 
-@pytest.mark.html_report(output_dir='./reports', report_name='CsvComparisionReport')
+#@pytest.mark.html_report(output_dir='./reports', report_name='CsvComparisionReport')
 def test_submit_job_to_cluster():
     # logger file provide logs
     global fileName
@@ -42,22 +42,25 @@ def test_submit_job_to_cluster():
         assert status1, "Failed to create the Cluster. Assertion failed."
 
     logger.info(f"{new_cluster_name} is created and started successfully!")
-    logger.info(f"Submitting the Job")
-    job_output = SubmitJobToCluster(project_id, region, new_cluster_name, f'{fileName}')
+    try:
+        logger.info(f"Submitting the Job")
+        job_output = SubmitJobToCluster(project_id, region, new_cluster_name, f'{fileName}')
 
-    if job_output:
-        assert job_output, "Job submission failed. Assertion failed."
-        delete_cluster(project_id, region, new_cluster_name)
-        logger.info(f"Cluster has been deleted successfully")
+        if job_output:
+            assert job_output, "Job submission failed. Assertion failed."
+            # delete_cluster(project_id, region, new_cluster_name)
+            # logger.info(f"Cluster has been deleted successfully")
 
-    logger.info(f"Job has been Submitted successfully")
+        logger.info(f"Job has been Submitted successfully")
 
-    # If the assertion passes, the program continues
-    logger.info("File has been generated successfully!")
+        # If the assertion passes, the program continues
+        logger.info("File has been generated successfully!")
+    # except:
+    #     logger.info("Something went wrong in submitting job")
+    finally:
+        logger.info(f"Deleting the {new_cluster_name}")
+        status2 = delete_cluster(project_id, region, new_cluster_name)
+        if status2:
+            assert status2, "Failed to delete the Cluster. Assertion failed."
 
-    logger.info(f"Deleting the {new_cluster_name}")
-    status2 = delete_cluster(project_id, region, new_cluster_name)
-    if status2:
-        assert status2, "Failed to delete the Cluster. Assertion failed."
-
-    logger.info(f"{new_cluster_name} is deleted successfully!")
+        logger.info(f"{new_cluster_name} is deleted successfully!")

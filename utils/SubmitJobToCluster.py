@@ -7,7 +7,7 @@ import sys
 from utils.ConstantsData import bucket_name
 
 
-def SubmitJobToCluster(project_id, region, cluster_name, main_file):
+def SubmitJobToCluster(project_id, region, cluster_name, main_file, args):
     # Create the job client.
     job_client = dataproc.JobControllerClient(
         client_options={"api_endpoint": f"{region}-dataproc.googleapis.com:443"}
@@ -19,13 +19,17 @@ def SubmitJobToCluster(project_id, region, cluster_name, main_file):
     job = {
         "placement": {"cluster_name": cluster_name},
         "pyspark_job": {
-            "main_python_file_uri": f"gs://{bucket_name}/{main_file}"
+            "main_python_file_uri": f"gs://{bucket_name}/{main_file}",
+            "args": args
         },
+
     }
 
     operation = job_client.submit_job_as_operation(
         request={"project_id": project_id, "region": region, "job": job}
     )
+
+    print(f"Arguments have been passed to job : {args}")
     response = operation.result()
 
     # Dataproc job output gets saved to the Google Cloud Storage bucket

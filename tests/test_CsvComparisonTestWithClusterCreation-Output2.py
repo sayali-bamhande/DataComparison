@@ -13,7 +13,7 @@ zone = 'us-central1-f'
 fileName = 'CompareCSVAndGenerateOutput.py'
 
 
-#@pytest.mark.html_report(output_dir='./reports', report_name='CsvComparisionReport')
+@pytest.mark.html_report(output_dir='./reports', report_name='CsvComparisionReport')
 def test_submit_job_to_cluster():
     # logger file provide logs
     global fileName

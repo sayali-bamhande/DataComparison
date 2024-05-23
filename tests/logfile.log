@@ -77,3 +77,12 @@
 2024-05-16 18:13:59,526 :INFO : tests.test_CsvComparisonTestWithClusterCreation-Output2 :File has been generated successfully!
 2024-05-16 18:13:59,527 :INFO : tests.test_CsvComparisonTestWithClusterCreation-Output2 :Deleting the automation-cluster
 2024-05-16 18:14:29,164 :INFO : tests.test_CsvComparisonTestWithClusterCreation-Output2 :automation-cluster is deleted successfully!
+2024-05-23 12:49:34,392 :INFO : tests.test_CsvComparisonTestWithClusterCreation-Output2 :Going to upload CompareCSVAndGenerateOutput.py on GCS bucket
+2024-05-23 12:49:40,355 :INFO : tests.test_CsvComparisonTestWithClusterCreation-Output2 :CompareCSVAndGenerateOutput.py is uploaded on GCS bucket successfully (code required to generate output in format 1)
+2024-05-23 12:49:40,355 :INFO : tests.test_CsvComparisonTestWithClusterCreation-Output2 :Starting the automation-cluster
+2024-05-23 12:51:59,823 :INFO : tests.test_CsvComparisonTestWithClusterCreation-Output2 :automation-cluster is created and started successfully!
+2024-05-23 12:51:59,824 :INFO : tests.test_CsvComparisonTestWithClusterCreation-Output2 :Submitting the Job
+2024-05-23 12:52:49,899 :INFO : tests.test_CsvComparisonTestWithClusterCreation-Output2 :Job has been Submitted successfully
+2024-05-23 12:52:49,900 :INFO : tests.test_CsvComparisonTestWithClusterCreation-Output2 :File has been generated successfully!
+2024-05-23 12:52:49,900 :INFO : tests.test_CsvComparisonTestWithClusterCreation-Output2 :Deleting the automation-cluster
+2024-05-23 12:53:28,502 :INFO : tests.test_CsvComparisonTestWithClusterCreation-Output2 :automation-cluster is deleted successfully!

@@ -9,18 +9,18 @@ from utils.ConstantsData import bucket_name
 
 def SubmitJobToCluster(project_id, region, cluster_name, args):
     # Create the job client.
-    main_file = 'CompareCSVAndGenerateOutput.py'
+    main_file_name = 'CompareCSVAndGenerateOutput.py'
     job_client = dataproc.JobControllerClient(
         client_options={"api_endpoint": f"{region}-dataproc.googleapis.com:443"}
     )
 
     # Create the job config. 'main_jar_file_uri' can also be a
     # Google Cloud Storage URL.
-    print("Main file is  : " + main_file)
+    print(f"Main file is  : {main_file_name}")
     job = {
         "placement": {"cluster_name": cluster_name},
         "pyspark_job": {
-            "main_python_file_uri": f"gs://{bucket_name}/{main_file}",
+            "main_python_file_uri": f"gs://{bucket_name}/{main_file_name}",
             "args": args
         },
 

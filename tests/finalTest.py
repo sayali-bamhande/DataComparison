@@ -1,7 +1,6 @@
 import argparse
 import os
 
-from utils import TestData
 from utils.CreateClusterTest import create_cluster, delete_cluster
 from utils.SubmitJobToCluster import SubmitJobToCluster
 from utils.UploadFileToGCS import uploadToGCS
@@ -15,13 +14,13 @@ parser.add_argument('--params', nargs='*', help='Argument should be in Key-value
 args = parser.parse_args()
 
 # Parse the key-value pairs and store them in the config module
-arg = []
-for param in args.params:
-    key, value = param.split('=')
-    TestData.params[key] = value
-
-TestData.iteration = TestData.params['count']
-print(f"Arguments stored in config: {TestData.params}")
+# arg = []
+# for param in args.params:
+#     key, value = param.split('=')
+#     TestData.params[key] = value
+#
+# TestData.iteration = TestData.params['count']
+# print(f"Arguments stored in config: {TestData.params}")
 
 current_file = os.path.abspath(__file__)
 root_dir = os.path.dirname(current_file)

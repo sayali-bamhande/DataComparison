@@ -6,7 +6,6 @@ import pandas as pd
 import sys
 
 
-
 def compare_and_generate_output(csv1_path, csv2_path, bucket_name, output_format, iteration):
     # Read CSV files
     if csv1_path.lower().endswith('.csv'):
@@ -24,7 +23,7 @@ def compare_and_generate_output(csv1_path, csv2_path, bucket_name, output_format
 
     # Initialize an empty list to store rows
     rows = []
-    report = [f"This process is for {iteration} iteration", f"No of rows in Source file(DB2) : {len(df1)}",
+    report = [f"This process is for iteration : {iteration} ", f"No of rows in Source file(DB2) : {len(df1)}",
               f"No of rows in Target file(BigQuery) : {len(df2)}"]
     # Iterate through each row and compare values
     count = 0
@@ -111,17 +110,22 @@ def compare_and_generate_output(csv1_path, csv2_path, bucket_name, output_format
 # print(f"argument name = {TestData.params['count']}")
 # print(f"file variable = {TestData.iteration}")
 def main(my_list):
-    print("###########", my_list)
+   # print("###########", my_list)
+    total_comparison = my_list[0]
+    # my_list.pop(0)
     iteration = 1
-    for i in range(len(my_list) - 1):
-        source_file = my_list[i]
-        target_file = my_list[i + 1]
-        compare_and_generate_output(source_file, target_file, 'mybucket_hsbc', "csv", iteration)
-        iteration = iteration + 1
-    file1 = 'gs://mybucket_hsbc/db2_changed.csv'
-    file2 = 'gs://mybucket_hsbc/BigQueryData.csv'
-    file1 = 'C:\\Users\\Sayali.Bamhande\\Downloads\\xl\\db2_changed.csv'
-    file2 = 'C:\\Users\\Sayali.Bamhande\\Downloads\\xl\\BigQueryData.csv'
+    for i in range(1, len(my_list) - 1):
+        if i % 2 != 0:
+            source_file = my_list[i]
+            target_file = my_list[i + 1]
+            print("=============================================================================================")
+            compare_and_generate_output(source_file, target_file, 'mybucket_hsbc', "csv", iteration)
+            print("=============================================================================================")
+            iteration = iteration + 1
+    # file1 = 'gs://mybucket_hsbc/db2_changed.csv'
+    # file2 = 'gs://mybucket_hsbc/BigQueryData.csv'
+    # file1 = 'C:\\Users\\Sayali.Bamhande\\Downloads\\xl\\db2_changed.csv'
+    # file2 = 'C:\\Users\\Sayali.Bamhande\\Downloads\\xl\\BigQueryData.csv'
 
 
 # compare_and_generate_output(file1, file2, 'mybucket_hsbc', "csv", 1)
@@ -136,22 +140,22 @@ def parse_arguments():
 # Example usage
 if __name__ == '__main__':
     print("script WILL start with new change....")
-    n=len(sys.argv)
-    print(f"total number of arguments are : {n-1}")
+    n = len(sys.argv)
+    print(f"Total number of arguments are : {n - 1}")
     print(f"User wants to perform  {sys.argv[1]} comparison")
 
     print("script is running....")
 
     for i in range(1, n):
         print(sys.argv[i], end=" ")
-       # list.append(sys.argv[i])
+    # list.append(sys.argv[i])
     list = []
     for i in range(1, n):
         key, value = sys.argv[i].split('=')
         list.append(value)
 
     print(f"List values are ## {list}")
-    list.append(sys.argv[i])
+    # list.append(sys.argv[i])
     # runtime_args = {}
     # if args.params:
     #     print("script started")
@@ -160,6 +164,6 @@ if __name__ == '__main__':
     #         key, value = arg.split('=')
     #         runtime_args[key] = value
     #         list.append(value)
-    list.pop(0)
+    # list.pop(0)
     print(f"calling main function now list : {list}")
     main(list)

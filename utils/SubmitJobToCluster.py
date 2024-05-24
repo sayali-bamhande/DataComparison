@@ -20,7 +20,7 @@ def SubmitJobToCluster(project_id, region, cluster_name,  args):
     job = {
         "placement": {"cluster_name": cluster_name},
         "pyspark_job": {
-            "main_python_file_uri": f"gs://{bucket_name}/{main_file_name}",
+            "main_python_file_uri": f"gs://{bucket_name}/CompareCSVAndGenerateOutput.py",
             "args": args
         },
 

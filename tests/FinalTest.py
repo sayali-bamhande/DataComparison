@@ -2,7 +2,6 @@ import argparse
 import os
 import sys
 
-from utils.CreateClusterTest import create_cluster, delete_cluster
 from utils.SubmitJobToCluster import SubmitJobToCluster
 from utils.ConstantsData import region, project_id, bucket_name, new_cluster_name
 

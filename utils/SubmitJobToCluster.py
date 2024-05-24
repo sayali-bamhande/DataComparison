@@ -7,7 +7,7 @@ import sys
 from utils.ConstantsData import bucket_name
 
 
-def SubmitJobToCluster(project_id, region, cluster_name, args):
+def SubmitJobToCluster(project_id, region, cluster_name, file_name, args):
     # Create the job client.
     main_file_name = 'CompareCSVAndGenerateOutput.py'
     job_client = dataproc.JobControllerClient(
@@ -16,11 +16,11 @@ def SubmitJobToCluster(project_id, region, cluster_name, args):
 
     # Create the job config. 'main_jar_file_uri' can also be a
     # Google Cloud Storage URL.
-    print(f"Main file is  : {main_file_name}")
+    print(f"Main file is  : {file_name}")
     job = {
         "placement": {"cluster_name": cluster_name},
         "pyspark_job": {
-            "main_python_file_uri": f"gs://{bucket_name}/CompareCSVAndGenerateOutput.py",
+            "main_python_file_uri": f"gs://{bucket_name}/{file_name}",
             "args": args
         },
 

@@ -24,7 +24,7 @@ for i in range(1, len(sys.argv)):
 #     TestData.params[key] = value
 #
 # TestData.iteration = TestData.params['count']
-print(f"Arguments stored in config: {list}")
+print(f"Arguments stored in config: {arg}")
 
 current_file = os.path.abspath(__file__)
 root_dir = os.path.dirname(current_file)

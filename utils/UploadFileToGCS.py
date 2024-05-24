@@ -25,10 +25,3 @@ def uploadToGCS(local_file_path, bucket_name, destination_blob_name):
     # flag_value = True
 
     print(f"File {local_file_path} uploaded as {destination_blob_name} in {bucket_name}.")
-
-# return False
-
-# local_file_path = "C://Users//Nikhil.Dhulekar//PycharmProjects//pythonProject//utils//CsvDataComparisonUsingDataframe.py_old"
-# bucket_name = "dumybucket123"
-# destination_blob_name = f'Code/CsvDataComparisonUsingDataframe.py_old'
-# upload_to_gcs(local_file_path, bucket_name, destination_blob_name)

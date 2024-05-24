@@ -13,13 +13,13 @@ parser.add_argument('--params', nargs='*', help='Argument should be in Key-value
 
 # args = parser.parse_args()
 arg = []
-for i in range(1, len(sys.argv)):
+for i in range(2, len(sys.argv)):
     print(sys.argv[i], end=" ")
     arg.append(sys.argv[i])
 
-if 'params' in arg[0]:
-    print("first parameter is params")
-    arg.pop(0)
+# if 'params' in arg[0]:
+#     print("first parameter is params")
+#     arg.pop(0)
 
 # Parse the key-value pairs and store them in the config module
 # arg = []

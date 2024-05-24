@@ -17,6 +17,10 @@ for i in range(1, len(sys.argv)):
     print(sys.argv[i], end=" ")
     arg.append(sys.argv[i])
 
+if 'params' in arg[0]:
+    print("first parameter is params")
+    arg.pop(0)
+
 # Parse the key-value pairs and store them in the config module
 # arg = []
 # for param in args.params:

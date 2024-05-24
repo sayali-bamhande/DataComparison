@@ -7,8 +7,9 @@ import sys
 from utils.ConstantsData import bucket_name
 
 
-def SubmitJobToCluster(project_id, region, cluster_name, main_file, args):
+def SubmitJobToCluster(project_id, region, cluster_name, args):
     # Create the job client.
+    main_file = 'CompareCSVAndGenerateOutput.py'
     job_client = dataproc.JobControllerClient(
         client_options={"api_endpoint": f"{region}-dataproc.googleapis.com:443"}
     )

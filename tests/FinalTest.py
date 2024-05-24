@@ -19,7 +19,7 @@ args = parser.parse_args()
 #     TestData.params[key] = value
 #
 # TestData.iteration = TestData.params['count']
-# print(f"Arguments stored in config: {TestData.params}")
+print(f"Arguments stored in config: {args.params}")
 
 current_file = os.path.abspath(__file__)
 root_dir = os.path.dirname(current_file)

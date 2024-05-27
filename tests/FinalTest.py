@@ -1,7 +1,7 @@
 import argparse
 import os
 
-from utils.CreateClusterTest import create_cluster, delete_cluster
+import utils.CreateClusterTest
 from utils.UploadFileToGCS import UploadFileToGCS
 from utils.ConstantsData import region, project_id, bucket_name, new_cluster_name
 from utils.SubmitJobToCluster import SubmitJobToCluster

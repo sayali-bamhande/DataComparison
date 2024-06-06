@@ -27,7 +27,7 @@ def compare_and_generate_output(csv1_path, csv2_path, bucket_name, output_format
     report = [f"This process is for {iteration} iteration", f"No of rows in Source file(DB2) : {len(df1)}",
               f"No of rows in Target file(BigQuery) : {len(df2)}"]
     # Iterate through each row and compare values
-    report.append(f"RowNo.|Primary Key |Discrepancy Column names")
+    report.append(f"RowNo. ||   Primary Key   ||  Discrepancy Column names")
 
     count = 0
     row_num = 0
@@ -55,7 +55,7 @@ def compare_and_generate_output(csv1_path, csv2_path, bucket_name, output_format
                     discrepancy_row[f"{column}_DB2"] = row[column]
                     discrepancy_row[f"{column}_BigQuery"] = ""
             if temp != '':
-                report.append(f"{i} | {row[0]} --> {temp}")
+                report.append(f"{i}     ||  {row[0]}       ||  {temp}")
                 row_num = row_num + 1
             i = i + 1
 

@@ -100,7 +100,6 @@ def compare_and_generate_output(csv1_path, csv2_path, bucket_name, output_format
     for line in report:
         print(line)
 
-
 # print(df)
 
 

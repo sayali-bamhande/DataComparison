@@ -6,7 +6,7 @@ from utils.ConstantsData import region, project_id, cluster_name, bucket_name, n
 from utils.CreateClusterTest import delete_cluster, create_cluster
 from utils.StartCluster import startTheCluster
 from utils.StopCluster import stopTheCluster
-from utils.UploadFileToGCS import uploadToGCS
+from utils.UploadFileToGCS import UploadFileToGCS
 from utils.SubmitJobToCluster import SubmitJobToCluster
 
 zone = 'us-central1-f'
@@ -33,7 +33,7 @@ def test_submit_job_to_cluster():
 
     logger.info(f"Going to upload {fileName} on GCS bucket")
     destination_blob_name = f'{fileName}'
-    uploadToGCS(file_path, bucket_name, destination_blob_name)
+    UploadFileToGCS(file_path, bucket_name, destination_blob_name)
     logger.info(f"{fileName} is uploaded on GCS bucket successfully (code required to generate output in format 1)")
 
     logger.info(f"Starting the {new_cluster_name}")

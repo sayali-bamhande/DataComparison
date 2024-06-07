@@ -1,10 +1,11 @@
 import argparse
 import os
+from collections import Counter
 from datetime import datetime
+from tabulate import tabulate
 
 import pandas as pd
 import sys
-
 
 
 def compare_and_generate_output(csv1_path, csv2_path, bucket_name, output_format, iteration):
@@ -30,10 +31,11 @@ def compare_and_generate_output(csv1_path, csv2_path, bucket_name, output_format
     report.append(f"RowNo.||   Primary Key   ||  Discrepancy Column names")
     report.append(f"---------------------------------------------------------")
 
-
     count = 0
     row_num = 0
     i = 1
+    list = []
+    data = []
     for index, row in df1.iterrows():
         temp = ''
         flag = False
@@ -47,7 +49,8 @@ def compare_and_generate_output(csv1_path, csv2_path, bucket_name, output_format
                         break
                     discrepancy_row[f"{column}_DB2"] = row[column]
                     discrepancy_row[f"{column}_BigQuery"] = df2.iloc[index][column]
-                    temp = temp + f'{column} ,'
+                    temp = temp + f'{column},'
+                    list.append(column)
                     # report.append(f"  {i}  | {column}")
                     flag = True
                     count = count + 1
@@ -58,6 +61,7 @@ def compare_and_generate_output(csv1_path, csv2_path, bucket_name, output_format
                     discrepancy_row[f"{column}_BigQuery"] = ""
             if temp != '':
                 report.append(f"{i}     ||  {row[0]}       ||  {temp}")
+                data.append({"RowNo.": i, "Unique_Key":row[0], "Discrepancy_Column_names":temp})
                 row_num = row_num + 1
             i = i + 1
 
@@ -104,9 +108,11 @@ def compare_and_generate_output(csv1_path, csv2_path, bucket_name, output_format
     df = pd.read_csv(output_path)
     pd.options.display.max_columns = len(df.columns)
     report.append(f"Reports uploaded at GCS location and path :  {output_path}")
-
+    print(f"The List is ${list}")
     for line in report:
         print(line)
+    word_counts = count_word_occurrences(list)
+    print_word_counts_table(word_counts)
 
 
 # print(df)
@@ -140,18 +146,33 @@ def parse_arguments():
     return parser.parse_args()
 
 
+def count_word_occurrences(word_list):
+    # Use Counter to count occurrences of each word in the list
+    word_counts = Counter(word_list)
+    return word_counts
+
+
+def print_word_counts_table(word_counts):
+    # Convert the Counter object to a list of tuples
+    table = [(word, count) for word, count in word_counts.items()]
+
+    # Print the table using tabulate
+    print(tabulate(table, headers=["Column Name", "Discrepancy Count"], tablefmt="grid"))
+
+
+
 # Example usage
 if __name__ == '__main__':
     print("script WILL start with new change....")
-    n=len(sys.argv)
-    print(f"total number of arguments are : {n-1}")
+    n = len(sys.argv)
+    print(f"total number of arguments are : {n - 1}")
     print(f"User wants to perform  {sys.argv[1]} comparison")
 
     print("script is running....")
 
     for i in range(1, n):
         print(sys.argv[i], end=" ")
-       # list.append(sys.argv[i])
+    # list.append(sys.argv[i])
     list = []
     for i in range(1, n):
         key, value = sys.argv[i].split('=')
@@ -167,6 +188,6 @@ if __name__ == '__main__':
     #         key, value = arg.split('=')
     #         runtime_args[key] = value
     #         list.append(value)
-    #list.pop(0)
+    # list.pop(0)
     print(f"calling main function now list : {list}")
     main(list)

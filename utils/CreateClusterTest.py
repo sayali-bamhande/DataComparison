@@ -50,12 +50,6 @@ def create_cluster(project_id, region, cluster_name, zone):
 
     return True
 
-# project_id = 'myprojecthsbc'
-# region = 'us-central1'
-# cluster_name = 'cluster-1234'
-# zone = 'us-central1-f'
-# create_cluster(project_id, region, cluster_name, zone)
-
 
 def delete_cluster(project_id, region, cluster_name):
     # Now, let's delete the cluster

@@ -61,7 +61,7 @@ def compare_and_generate_output(csv1_path, csv2_path, bucket_name, output_format
                     discrepancy_row[f"{column}_BigQuery"] = ""
             if temp != '':
                 report.append(f"{i}     ||  {row[0]}       ||  {temp}")
-                data.append({"RowNo.": i, "Unique_Key":row[0], "Discrepancy_Column_names":temp})
+                data.append({"RowNo.": i, "Unique_Key": row[0], "Discrepancy_Column_names": temp})
                 row_num = row_num + 1
             i = i + 1
 
@@ -127,9 +127,9 @@ def main(my_list):
         if i % 2 != 0:
             source_file = my_list[i]
             target_file = my_list[i + 1]
-            print("=============================================================================================")
+            print("=========================================================================================================")
             compare_and_generate_output(source_file, target_file, 'mybucket_hsbc', "csv", iteration)
-            print("=============================================================================================")
+            print("=========================================================================================================")
             iteration = iteration + 1
     file1 = 'gs://mybucket_hsbc/db2_changed.csv'
     file2 = 'gs://mybucket_hsbc/BigQueryData.csv'
@@ -160,13 +160,14 @@ def print_word_counts_table(word_counts):
     print(tabulate(table, headers=["Column Name", "Discrepancy Count"], tablefmt="grid"))
 
 
-
 # Example usage
 if __name__ == '__main__':
     print("script WILL start with new change....")
     n = len(sys.argv)
     print(f"total number of arguments are : {n - 1}")
     print(f"User wants to perform  {sys.argv[1]} comparison")
+
+
 
     print("script is running....")
 
@@ -179,7 +180,7 @@ if __name__ == '__main__':
         list.append(value)
 
     print(f"List values are ## {list}")
-    list.append(sys.argv[i])
+    #list.append(sys.argv[i])
     # runtime_args = {}
     # if args.params:
     #     print("script started")

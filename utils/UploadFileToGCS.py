@@ -12,16 +12,16 @@ def UploadFileToGCS(local_file_path, bucket_name, destination_blob_name):
 
     # Create a blob object
     blob = bucket.blob(destination_blob_name)
-    print("{} {} ".format("Created blob", blob))
-    print("{} {} ".format("blob Exist", blob.exists()))
+    # print("{} {} ".format("Created blob", blob))
+    # print("{} {} ".format("blob Exist", blob.exists()))
 
     # Delete the existing blob if it exists
     if blob.exists():
         blob.delete()
 
-    print("Before uploading file")
+   # print("Before uploading file")
     # Upload the local file
     blob.upload_from_filename(local_file_path)
     # flag_value = True
 
-    print(f"File {local_file_path} uploaded as {destination_blob_name} in {bucket_name}.")
+    print(f"File {local_file_path} is uploaded as {destination_blob_name} on {bucket_name}.")
